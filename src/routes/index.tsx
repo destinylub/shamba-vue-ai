@@ -38,7 +38,13 @@ function Index() {
           <div className="h-2 w-2 rounded-full" style={{ background: "#F57F17" }} />
           {BRAND}
         </div>
-        <a href="#waitlist" className="rounded-md px-4 py-[7px] text-xs font-semibold" style={{ background: "#F57F17", color: "#FFFDE7" }}>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScF2DhnU1FnyReKAlrp2pkykVigmFqAAgKPhJziQJt6-n-6kw/viewform?usp=publish-editor"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-md px-4 py-[7px] text-xs font-semibold"
+          style={{ background: "#F57F17", color: "#FFFDE7" }}
+        >
           Join Waitlist
         </a>
       </div>
