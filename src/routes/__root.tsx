@@ -29,14 +29,18 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Shamba Vue AI" },
+      { name: "description", content: "Shamba Vue AI manages monitoring for absentee farm owners. Get a daily WhatsApp report about your farm from anywhere in the world. No app, no login required" },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Shamba Vue AI" },
+      { property: "og:description", content: "Shamba Vue AI manages monitoring for absentee farm owners. Get a daily WhatsApp report about your farm from anywhere in the world. No app, no login required" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Shamba Vue AI" },
+      { name: "twitter:description", content: "Shamba Vue AI manages monitoring for absentee farm owners. Get a daily WhatsApp report about your farm from anywhere in the world. No app, no login required" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0154dc3c-e8a0-4daa-a6f9-a2b5a4a18852" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0154dc3c-e8a0-4daa-a6f9-a2b5a4a18852" },
     ],
     links: [
       {
