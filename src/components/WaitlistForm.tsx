@@ -43,58 +43,62 @@ export function WaitlistForm({ variant = "hero" }: { variant?: Variant }) {
 
   if (variant === "diaspora") {
     return (
-      <form onSubmit={onSubmit} className="mx-auto mt-2 flex max-w-md flex-col items-center gap-2 sm:flex-row">
-        <input
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-          type="tel"
-          placeholder="WhatsApp number (e.g. +44...)"
-          className="w-full flex-1 rounded-lg border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-2.5 text-sm text-primary-foreground placeholder:text-primary-foreground/50 outline-none focus:border-primary-foreground/60"
-          aria-label="WhatsApp number"
-        />
-        <button
-          type="submit"
-          disabled={status === "loading"}
-          className="w-full whitespace-nowrap rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60 sm:w-auto"
-        >
-          {status === "loading" ? "Joining..." : "Join diaspora waitlist →"}
-        </button>
+      <div className="mx-auto max-w-[360px]">
+        <form onSubmit={onSubmit} className="flex flex-col gap-2 sm:flex-row">
+          <input
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            required
+            type="tel"
+            placeholder="WhatsApp number (e.g. +44...)"
+            className="flex-1 rounded-lg px-[14px] py-[10px] text-[13px] outline-none"
+            style={{ background: "rgba(255,253,231,0.15)", border: "1px solid rgba(255,253,231,0.35)", color: "#FFFDE7" }}
+            aria-label="WhatsApp number"
+          />
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="whitespace-nowrap rounded-lg px-6 py-[10px] text-[13px] font-semibold disabled:opacity-60"
+            style={{ background: "#1B5E20", color: "#FFFDE7" }}
+          >
+            {status === "loading" ? "Joining..." : "Join diaspora waitlist →"}
+          </button>
+        </form>
         {status === "ok" && (
-          <p className="w-full text-center text-xs text-primary-foreground/90 sm:absolute sm:mt-12">
-            ✓ You're on the list — asante sana!
-          </p>
+          <div className="mt-2 text-[11px]" style={{ color: "#FFFDE7" }}>✓ You're on the list — thank you!</div>
         )}
-      </form>
+      </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-md">
-      <form onSubmit={onSubmit} className="flex flex-col gap-2 sm:flex-row">
+    <div className="mx-auto max-w-[360px]">
+      <form onSubmit={onSubmit} className="mb-4 flex gap-2">
         <input
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
           type="tel"
           placeholder="Enter your WhatsApp number"
-          className="flex-1 rounded-lg border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-2.5 text-sm text-primary-foreground placeholder:text-primary-foreground/40 outline-none focus:border-accent"
+          className="flex-1 rounded-lg px-[14px] py-[10px] text-[13px] outline-none"
+          style={{ background: "rgba(255,253,231,0.1)", border: "1px solid rgba(255,253,231,0.2)", color: "#FFFDE7" }}
           aria-label="WhatsApp number"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="whitespace-nowrap rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition hover:opacity-90 disabled:opacity-60"
+          className="whitespace-nowrap rounded-lg px-5 py-[10px] text-[13px] font-semibold disabled:opacity-60"
+          style={{ background: "#F57F17", color: "#FFFDE7" }}
         >
           {status === "loading" ? "Joining..." : "Join Waitlist"}
         </button>
       </form>
-      <div className="mt-3 text-center text-[11px] text-primary-foreground/40">
+      <div className="text-[11px]" style={{ color: "rgba(255,253,231,0.35)" }}>
         {status === "ok"
-          ? "✓ You're on the waitlist — karibu Shamba Vue AI!"
+          ? "✓ You're on the waitlist — welcome to Shamba Vue AI!"
           : status === "err"
             ? "Please enter a valid WhatsApp number."
-            : "Free for first 3 months · M-Pesa / MoMo billing · Cancel anytime"}
+            : "Free for first 3 months · MTN MoMo billing · Cancel anytime"}
       </div>
     </div>
   );
