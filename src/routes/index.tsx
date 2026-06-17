@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import farmHero from "@/assets/farm-hero.jpg.asset.json";
+import shambaLogo from "@/assets/shamba-logo.png.asset.json";
 
 
 export const Route = createFileRoute("/")({
@@ -40,7 +41,7 @@ function Index() {
       {/* NAV */}
       <div className="flex h-[52px] items-center justify-between px-8" style={{ background: "#1B5E20" }}>
         <div className="flex items-center gap-2 text-[15px] font-bold tracking-wider" style={{ color: "#FFFDE7" }}>
-          <div className="h-2 w-2 rounded-full" style={{ background: "#F57F17" }} />
+          <img src={shambaLogo.url} alt="Shamba Vue AI logo" className="h-7 w-7 object-contain" />
           {BRAND}
         </div>
         <a
