@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WaitlistForm } from "@/components/WaitlistForm";
+import farmHero from "@/assets/farm-hero.jpg.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -53,7 +55,15 @@ function Index() {
       </div>
 
       {/* HERO */}
-      <div id="waitlist" className="relative overflow-hidden px-10 pb-12 pt-14 text-center" style={{ background: "#1B5E20" }}>
+      <div
+        id="waitlist"
+        className="relative overflow-hidden px-10 pb-12 pt-14 text-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(27,94,32,0.78), rgba(27,94,32,0.88)), url(${farmHero.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div
           className="mb-5 inline-block rounded-full px-[14px] py-[5px] text-[11px] font-semibold uppercase tracking-[0.1em]"
           style={{ background: "rgba(245,127,23,0.18)", color: "#F57F17", border: "1px solid rgba(245,127,23,0.3)" }}
