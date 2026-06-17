@@ -39,8 +39,8 @@ function Index() {
   return (
     <div className="pg w-full" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFDE7", color: "#1B2E1B" }}>
       {/* NAV */}
-      <div className="flex h-[52px] items-center justify-between px-8" style={{ background: "#1B5E20" }}>
-        <div className="flex items-center gap-2 text-[15px] font-bold tracking-wider" style={{ color: "#FFFDE7" }}>
+      <div className="flex h-[52px] items-center justify-between px-8 border-b" style={{ background: "#FFFDE7", borderColor: "#E8E2C4" }}>
+        <div className="flex items-center gap-2 text-[15px] font-bold tracking-wider" style={{ color: "#1B5E20" }}>
           <img src={shambaLogo.url} alt="Shamba Vue AI logo" className="h-7 w-7 object-contain" />
           {BRAND}
         </div>
