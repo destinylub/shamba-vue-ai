@@ -282,7 +282,7 @@ function Index() {
           <a href="https://wa.me/256764028496" target="_blank" rel="noopener noreferrer" className="underline">WhatsApp us: +256 764 028 496</a>
         </div>
         <div className="mt-5 border-t pt-4 text-[13px]" style={{ borderColor: "rgba(255,253,231,0.25)", color: "rgba(255,253,231,0.8)" }}>
-          © 2026 Shamba Vue AI · Built at Makerere University
+          © 2026 Shamba Vue AI · Founded in Uganda
         </div>
       </div>
     </div>
