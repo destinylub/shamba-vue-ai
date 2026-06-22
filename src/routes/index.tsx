@@ -276,13 +276,12 @@ function Index() {
       <div className="px-10 py-9" style={{ background: C.greenDark }}>
         <div className="mb-2 text-[18px] font-extrabold" style={{ color: C.cream }}>🌿 Shamba Vue AI</div>
         <div className="mb-5 text-[14px]" style={{ color: "rgba(255,253,231,0.85)" }}>Your farm. Always in sight. · Uganda, East Africa</div>
-        <div className="flex flex-wrap gap-5">
-          {["How it works", "Pricing", "Contact us", "WhatsApp us"].map((l) => (
-            <span key={l} className="cursor-pointer text-[14px] font-semibold underline" style={{ color: C.cream }}>{l}</span>
-          ))}
+        <div className="mb-5 grid gap-3 text-[14px] font-semibold" style={{ color: C.cream }}>
+          <a href="mailto:shambavueai@gmail.com" className="underline">Email us: shambavueai@gmail.com</a>
+          <a href="https://wa.me/256764028496" target="_blank" rel="noopener noreferrer" className="underline">WhatsApp us: +256 764 028 496</a>
         </div>
         <div className="mt-5 border-t pt-4 text-[13px]" style={{ borderColor: "rgba(255,253,231,0.25)", color: "rgba(255,253,231,0.8)" }}>
-          © 2026 Shamba Vue AI · Built at Makerere University · contact@shambavue.ai
+          © 2026 Shamba Vue AI · Built at Makerere University
         </div>
       </div>
     </div>
