@@ -276,6 +276,7 @@ function Index() {
       <div className="px-10 py-9" style={{ background: C.greenDark }}>
         <div className="mb-2 text-[18px] font-extrabold" style={{ color: C.cream }}>🌿 Shamba Vue AI</div>
         <div className="mb-5 text-[14px]" style={{ color: "rgba(255,253,231,0.85)" }}>Your farm. Always in sight. · Uganda, East Africa</div>
+        <h3 className="mb-3 text-[18px] font-extrabold" style={{ color: C.cream }}>Contact Us</h3>
         <div className="mb-5 grid gap-3 text-[14px] font-semibold" style={{ color: C.cream }}>
           <a href="mailto:shambavueai@gmail.com" className="underline">Email us: shambavueai@gmail.com</a>
           <a href="https://wa.me/256764028496" target="_blank" rel="noopener noreferrer" className="underline">WhatsApp us: +256 764 028 496</a>
