@@ -375,23 +375,53 @@ function Index() {
   );
 }
 
-function PriceCard({ tier, amount, features, featured }: { tier: string; amount: string; features: string[]; featured?: boolean }) {
+function PriceCard({
+  tier,
+  badge,
+  badgeTone = "standard",
+  install,
+  installNote = "One-time installation",
+  monthly,
+  monthlyNote = "/ month",
+  features,
+  featured,
+}: {
+  tier: string;
+  badge?: string;
+  badgeTone?: "standard" | "founder" | "popular";
+  install: string;
+  installNote?: string;
+  monthly: string;
+  monthlyNote?: string;
+  features: string[];
+  featured?: boolean;
+}) {
+  const badgeStyle =
+    badgeTone === "founder"
+      ? { background: C.orange, color: "#1B1300" }
+      : badgeTone === "popular"
+      ? { background: C.green, color: C.cream }
+      : { background: C.greenTint, color: C.greenDark };
+
   return (
     <div className="rounded-[12px] bg-white p-5" style={{ border: featured ? `3px solid ${C.green}` : `2px solid ${C.greenBorder}` }}>
-      {featured && (
-        <span className="mb-3 inline-block rounded-full px-3 py-1 text-[12px] font-bold tracking-[0.08em]" style={{ background: C.green, color: C.cream }}>
-          Most Popular
+      {badge && (
+        <span className="mb-3 inline-block rounded-full px-3 py-1 text-[12px] font-bold uppercase tracking-[0.08em]" style={badgeStyle}>
+          {badge}
         </span>
       )}
-      <div className="mb-1 text-[15px] font-bold" style={{ color: C.greenDark }}>{tier}</div>
-      <div className="text-[26px] font-extrabold" style={{ color: C.greenDark }}>
-        {amount} <span className="text-[14px] font-semibold" style={{ color: C.bodySoft }}>/month</span>
+      <div className="mb-2 text-[18px] font-extrabold" style={{ color: C.greenDark }}>{tier}</div>
+      <div className="text-[24px] font-extrabold leading-none" style={{ color: C.greenDark }}>{install}</div>
+      <div className="mt-1 text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: C.bodySoft }}>{installNote}</div>
+      <div className="mt-2 flex items-baseline gap-2">
+        <span className="text-[20px] font-extrabold" style={{ color: C.orangeText }}>{monthly}</span>
+        <span className="text-[14px] font-semibold" style={{ color: C.bodySoft }}>{monthlyNote}</span>
       </div>
-      <div className="mt-3">
+      <div className="mt-4">
         {features.map((f) => (
-          <div key={f} className="flex items-center gap-2 py-2 text-[15px] last:border-b-0" style={{ color: C.body, borderBottom: `1px solid ${C.greenBorder}` }}>
-            <div className="flex h-[18px] w-[18px] items-center justify-center rounded-full text-[11px] font-bold" style={{ background: C.green, color: C.cream }}>✓</div>
-            {f}
+          <div key={f} className="flex items-start gap-2 py-2 text-[15px] last:border-b-0" style={{ color: C.body, borderBottom: `1px solid ${C.greenBorder}` }}>
+            <div className="mt-[3px] flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold" style={{ background: C.green, color: C.cream }}>✓</div>
+            <span>{f}</span>
           </div>
         ))}
       </div>
