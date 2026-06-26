@@ -267,7 +267,7 @@ function Index() {
         <h3 className="mb-5 text-[20px] font-extrabold" style={{ color: C.greenDark }}>Built for Kampala & upcountry farms</h3>
         <div className="grid gap-4">
           <PriceCard
-            tier="FarmEye Basic"
+            tier="FarmBrain Basic"
             badge="Founder Special"
             badgeTone="founder"
             install="UGX 250,000"
@@ -276,7 +276,7 @@ function Index() {
             features={["1 solar 4G camera installed", "Daily FarmBrain report at 7am", "Motion alerts with photo on WhatsApp", "Weather advisory for your GPS", "WhatsApp chatbot — STATUS / ALERTS", "Solar-powered — works through outages", "Founding member badge + priority support"]}
           />
           <PriceCard
-            tier="FarmEye Basic"
+            tier="FarmBrain Basic"
             badge="Standard"
             install="UGX 450,000"
             installNote="One-time installation"
@@ -284,7 +284,7 @@ function Index() {
             features={["1 solar 4G camera installed", "Daily FarmBrain report at 7am", "Motion alerts with photo", "Weather advisory", "WhatsApp chatbot", "Solar-powered hardware", "Local SD card recording"]}
           />
           <PriceCard
-            tier="FarmEye Standard"
+            tier="FarmBrain Standard"
             badge="Most Popular"
             badgeTone="popular"
             featured
@@ -294,7 +294,7 @@ function Index() {
             features={["3 solar 4G cameras — full coverage", "Daily FarmBrain AI report", "Motion alerts with photo", "Worker arrival & departure tracking", "Crop disease detection from leaf photo", "Weekly worker productivity score", "Weather + planting advisory", "Full WhatsApp chatbot commands"]}
           />
           <PriceCard
-            tier="FarmEye Premium"
+            tier="FarmBrain Premium"
             badge="Premium"
             install="UGX 1,500,000"
             installNote="One-time installation"
