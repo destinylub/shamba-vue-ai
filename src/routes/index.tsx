@@ -246,18 +246,104 @@ function Index() {
       <div className="px-10 py-14">
         <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>Pricing</div>
         <h2 className="mb-3 text-[26px] font-extrabold leading-[1.25]" style={{ color: C.greenDark }}>
-          Simple monthly plans.<br />MTN MoMo billing.
+          Simple, transparent<br />pricing.
         </h2>
-        <div className="mb-4 mt-7 grid grid-cols-2 gap-4">
-          <PriceCard tier="Basic" amount="UGX 50,000" features={["1 camera", "Daily FarmBrain report", "Motion alerts + photos", "Weather advisory"]} />
-          <PriceCard tier="Standard" amount="UGX 120,000" featured features={["3 cameras", "Worker arrival tracking", "Crop disease detection", "Productivity score"]} />
-        </div>
-        <div className="flex items-center justify-between rounded-[10px] bg-white px-5 py-4" style={{ border: `2px solid ${C.greenBorder}` }}>
-          <div>
-            <div className="text-[16px] font-bold" style={{ color: C.greenDark }}>Diaspora Premium</div>
-            <div className="text-[14px]" style={{ color: C.bodySoft }}>For Ugandans abroad — billed in USD</div>
+        <p className="mb-7 max-w-[520px] text-[16px] leading-[1.7]" style={{ color: C.bodySoft }}>
+          One-time installation. Monthly AI intelligence. Cancel anytime — no hidden fees, ever.
+        </p>
+
+        {/* Founder offer banner */}
+        <div className="mb-7 flex flex-wrap items-center gap-4 rounded-[12px] px-5 py-4" style={{ background: C.orange, color: "#1B1300", border: "2px solid #FFD89A" }}>
+          <span className="rounded-full px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.12em]" style={{ background: "#1B1300", color: C.orange }}>⚡ Limited</span>
+          <div className="flex-1 min-w-[180px]">
+            <div className="text-[16px] font-extrabold">Founding Member Offer</div>
+            <div className="text-[14px]" style={{ color: "#3A2400" }}>First 10 customers — reduced installation fee + permanent founding badge.</div>
           </div>
-          <div className="text-[20px] font-extrabold" style={{ color: C.orangeText }}>$50 USD/mo</div>
+          <div className="text-[22px] font-extrabold">7 <span className="text-[12px] font-semibold uppercase tracking-[0.08em]">spots left</span></div>
+        </div>
+
+        {/* UGANDA TIERS */}
+        <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>Uganda · MTN MoMo</div>
+        <h3 className="mb-5 text-[20px] font-extrabold" style={{ color: C.greenDark }}>Built for Kampala & upcountry farms</h3>
+        <div className="grid gap-4">
+          <PriceCard
+            tier="FarmEye Basic"
+            badge="Founder Special"
+            badgeTone="founder"
+            install="UGX 250,000"
+            installNote="One-time installation (founding price)"
+            monthly="UGX 50,000"
+            features={["1 solar 4G camera installed", "Daily FarmBrain report at 7am", "Motion alerts with photo on WhatsApp", "Weather advisory for your GPS", "WhatsApp chatbot — STATUS / ALERTS", "Solar-powered — works through outages", "Founding member badge + priority support"]}
+          />
+          <PriceCard
+            tier="FarmEye Basic"
+            badge="Standard"
+            install="UGX 450,000"
+            installNote="One-time installation"
+            monthly="UGX 50,000"
+            features={["1 solar 4G camera installed", "Daily FarmBrain report at 7am", "Motion alerts with photo", "Weather advisory", "WhatsApp chatbot", "Solar-powered hardware", "Local SD card recording"]}
+          />
+          <PriceCard
+            tier="FarmEye Standard"
+            badge="Most Popular"
+            badgeTone="popular"
+            featured
+            install="UGX 900,000"
+            installNote="One-time installation"
+            monthly="UGX 120,000"
+            features={["3 solar 4G cameras — full coverage", "Daily FarmBrain AI report", "Motion alerts with photo", "Worker arrival & departure tracking", "Crop disease detection from leaf photo", "Weekly worker productivity score", "Weather + planting advisory", "Full WhatsApp chatbot commands"]}
+          />
+          <PriceCard
+            tier="FarmEye Premium"
+            badge="Premium"
+            install="UGX 1,500,000"
+            installNote="One-time installation"
+            monthly="UGX 250,000"
+            features={["Unlimited cameras — full perimeter", "Everything in Standard, plus:", "Livestock behaviour AI", "Harvest forecast 4–6 weeks out", "Satellite NDVI crop health (Sentinel-2)", "Monthly 1-on-1 farm review call", "Priority alert response < 5 minutes", "Luganda-language reports on request"]}
+          />
+        </div>
+
+        {/* DIASPORA TIERS */}
+        <div className="mt-12 mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>Diaspora · USD / EUR</div>
+        <h3 className="mb-5 text-[20px] font-extrabold" style={{ color: C.greenDark }}>For Ugandans abroad</h3>
+        <div className="grid gap-4">
+          <PriceCard
+            tier="Diaspora Starter"
+            badge="Starter"
+            install="$120 USD"
+            installNote="One-time installation · also €110"
+            monthly="$30 USD"
+            monthlyNote="/ month · also €28"
+            features={["1 solar 4G camera, installed by our team", "Daily FarmBrain report on WhatsApp", "Motion alerts to your international number", "Weather advisory for your farm location", "Setup video call — we walk you through", "Pay by Wise, PayPal, bank transfer or card"]}
+          />
+          <PriceCard
+            tier="Diaspora Standard"
+            badge="Most Popular Diaspora"
+            badgeTone="popular"
+            featured
+            install="$180 USD"
+            installNote="One-time installation · also €165"
+            monthly="$50 USD"
+            monthlyNote="/ month · also €46"
+            features={["2 solar 4G cameras — entrance + main area", "Daily FarmBrain AI report", "Instant motion alerts to your WhatsApp", "Worker arrival & departure log", "Crop disease detection from leaf photo", "Harvest window forecast", "Monthly WhatsApp check-in call", "Pay in USD or EUR — Wise / PayPal / card"]}
+          />
+          <PriceCard
+            tier="Diaspora Elite"
+            badge="Elite"
+            install="$300 USD"
+            installNote="One-time installation · also €275"
+            monthly="$80 USD"
+            monthlyNote="/ month · also €74"
+            features={["3+ cameras — full perimeter", "Everything in Diaspora Standard, plus:", "Livestock behaviour AI", "Satellite crop health (Sentinel-2)", "Monthly PDF farm performance report", "Bi-weekly video call with our team", "Caretaker accountability scoring", "Emergency on-ground response protocol"]}
+          />
+        </div>
+
+        {/* Payment note */}
+        <div className="mt-7 rounded-[12px] bg-white px-5 py-5" style={{ border: `2px solid ${C.greenBorder}` }}>
+          <div className="mb-1 text-[15px] font-extrabold" style={{ color: C.greenDark }}>💳 Diaspora payment methods</div>
+          <div className="text-[15px] leading-[1.65]" style={{ color: C.bodySoft }}>
+            International bank transfer (SWIFT/IBAN), Wise, PayPal, or major debit/credit cards in USD or EUR. Subscriptions billed monthly — cancel anytime with 7 days notice. Hardware installed in Uganda within 3–5 working days of payment.
+          </div>
         </div>
       </div>
 
