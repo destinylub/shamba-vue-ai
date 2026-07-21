@@ -163,7 +163,7 @@ function Index() {
               { t: "Zero visibility", d: "Only caretaker calls you can't verify." },
               { t: "Disease", d: "Spreads undetected across fields." },
             ].map((p) => (
-              <div key={p.t} className="rounded-2xl bg-white px-6 py-5 transition hover:-translate-y-0.5" style={{ border: `1px solid ${C.greenBorder}` }}>
+              <div key={p.t} className="rounded-2xl bg-white px-6 py-5 svai-lift" style={{ border: `1px solid ${C.greenBorder}` }}>
                 <div className="mb-1 text-[17px] font-extrabold" style={{ color: C.greenDark }}>{p.t}</div>
                 <div className="text-[15px]" style={{ color: C.bodySoft }}>{p.d}</div>
               </div>
@@ -269,7 +269,7 @@ function Index() {
                 { p: "Workers", t: "Arrival tracking", d: "Know exactly when they clock in and out." },
                 { p: "Solar", t: "Offline-first", d: "Solar cameras. SD backup. Survives outages." },
               ].map((f) => (
-                <div key={f.t} className="rounded-2xl p-6 backdrop-blur transition hover:-translate-y-0.5" style={{ background: D.surface, border: `1px solid ${D.border}` }}>
+                <div key={f.t} className="rounded-2xl p-6 backdrop-blur svai-lift" style={{ background: D.surface, border: `1px solid ${D.border}` }}>
                   <span className="mb-3 inline-block rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em]" style={{ background: D.surfaceHi, color: D.amber, border: `1px solid ${D.border}` }}>{f.p}</span>
                   <div className="mb-1 text-[17px] font-extrabold" style={{ color: D.text }}>{f.t}</div>
                   <div className="text-[15px]" style={{ color: D.textSoft }}>{f.d}</div>
@@ -454,7 +454,7 @@ function PriceCardDark({
 
   return (
     <div
-      className="rounded-2xl p-6 backdrop-blur transition hover:-translate-y-0.5"
+      className="rounded-2xl p-6 backdrop-blur svai-lift"
       style={{
         background: featured ? "rgba(255,192,77,0.06)" : D.surface,
         border: featured ? `1px solid ${D.amber}` : `1px solid ${D.border}`,
