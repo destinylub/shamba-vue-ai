@@ -3,7 +3,6 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 import farmHero from "@/assets/farm-hero.jpg.asset.json";
 import shambaLogo from "@/assets/shamba-logo.png.asset.json";
 
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -11,7 +10,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "AI-powered farm monitoring for absentee owners. Daily WhatsApp report, motion alerts, crop disease detection — no app required.",
+          "AI farm monitoring for absentee owners. One WhatsApp report a day. No app.",
       },
       { property: "og:title", content: "Shamba Vue AI" },
       {
@@ -24,7 +23,7 @@ export const Route = createFileRoute("/")({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap",
         media: "print",
         onLoad: "this.media='all'",
       } as any,
@@ -33,354 +32,401 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const BRAND = "SHAMBA VUE AI";
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScF2DhnU1FnyReKAlrp2pkykVigmFqAAgKPhJziQJt6-n-6kw/viewform?usp=publish-editor";
 
-// Accessibility-tuned palette — keeps brand identity, raises contrast.
+// Brand palette
 const C = {
   cream: "#FFFDE7",
-  green: "#1B5E20",        // brand deep green — strong contrast on cream
-  greenDark: "#0E3A12",    // headings / body text on cream (AAA on cream)
-  greenBorder: "#A8C8AE",  // visible borders for low-vision users
-  body: "#1F2A20",         // primary body text on cream
-  bodySoft: "#3D4F40",     // secondary body text — still AA on cream
-  orange: "#F57F17",       // brand orange — used for fills only
-  orangeText: "#9A4A00",   // brand orange for TEXT (darkened for contrast)
+  green: "#1B5E20",
+  greenDark: "#0E3A12",
+  greenBorder: "#A8C8AE",
+  body: "#1F2A20",
+  bodySoft: "#3D4F40",
+  orange: "#F57F17",
+  orangeText: "#9A4A00",
   orangeTint: "#FFF1DA",
   greenTint: "#E1F0E4",
-  white: "#FFFFFF",
+};
+
+// Dark theme tokens for the mid band (FarmBrain → Pricing)
+const D = {
+  bg: "#0A1A0D",
+  bgSoft: "#0F2513",
+  surface: "rgba(255,253,231,0.04)",
+  surfaceHi: "rgba(255,253,231,0.08)",
+  border: "rgba(255,253,231,0.14)",
+  borderHi: "rgba(255,253,231,0.24)",
+  text: "#F4F1DE",
+  textSoft: "rgba(244,241,222,0.72)",
+  textMute: "rgba(244,241,222,0.55)",
+  amber: "#FFC04D",
 };
 
 function Index() {
   return (
     <div
-      className="pg w-full"
-      style={{ fontFamily: "'Inter', sans-serif", background: C.cream, color: C.body, fontSize: 17, lineHeight: 1.6 }}
+      className="w-full"
+      style={{
+        fontFamily: "'Inter', sans-serif",
+        background: C.cream,
+        color: C.body,
+        fontSize: 17,
+        lineHeight: 1.6,
+        letterSpacing: "-0.011em",
+      }}
     >
       {/* NAV */}
-      <div className="flex h-[60px] items-center justify-between px-8 border-b-2" style={{ background: C.cream, borderColor: C.greenBorder }}>
-        <div className="flex items-center gap-2 text-[17px] font-bold tracking-wider" style={{ color: C.green }}>
+      <nav
+        className="sticky top-0 z-30 flex h-[64px] items-center justify-between px-6 md:px-10 backdrop-blur-md"
+        style={{ background: "rgba(255,253,231,0.85)", borderBottom: `1px solid ${C.greenBorder}` }}
+      >
+        <div className="flex items-center gap-2.5 text-[16px] font-extrabold tracking-tight" style={{ color: C.greenDark }}>
           <img src={shambaLogo.url} alt="Shamba Vue AI logo" className="h-8 w-8 object-contain" />
-          {BRAND}
+          Shamba Vue AI
         </div>
         <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLScF2DhnU1FnyReKAlrp2pkykVigmFqAAgKPhJziQJt6-n-6kw/viewform?usp=publish-editor"
+          href={FORM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md px-5 py-[10px] text-sm font-bold"
-          style={{ background: C.green, color: C.cream }}
+          className="rounded-full px-5 py-2.5 text-[13px] font-bold transition hover:opacity-90"
+          style={{ background: C.greenDark, color: C.cream }}
         >
-          Join Waitlist
+          Join waitlist
         </a>
-      </div>
+      </nav>
 
-      {/* HERO */}
-      <div
-        id="waitlist"
-        className="relative overflow-hidden px-10 pb-14 pt-16 text-center"
+      {/* HERO — every.io cinematic */}
+      <section
+        className="relative overflow-hidden px-6 md:px-10 pt-24 pb-32"
         style={{
-          backgroundImage: `linear-gradient(rgba(14,58,18,0.86), rgba(14,58,18,0.93)), url(${farmHero.url})`,
+          backgroundImage: `linear-gradient(180deg, rgba(10,26,13,0.55) 0%, rgba(10,26,13,0.75) 100%), url(${farmHero.url})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        <div
-          className="mb-6 inline-block rounded-full px-4 py-[6px] text-[13px] font-bold uppercase tracking-[0.08em]"
-          style={{ background: C.orange, color: "#1B1300", border: "2px solid #FFD89A" }}
-        >
-          Now accepting beta farms · Uganda
-        </div>
-        <h1 className="mx-auto mb-4 max-w-[560px] text-[40px] font-extrabold leading-[1.15]" style={{ color: C.cream }}>
-          Your farm.<br />
-          <span style={{ color: "#FFC04D" }}>Always in sight.</span>
-        </h1>
-        <p className="mx-auto mb-8 max-w-[440px] text-[17px] leading-[1.7]" style={{ color: "#FFFDE7" }}>
-          AI-powered monitoring for absentee farm owners. Get a daily WhatsApp report about your farm — no app, no login required.
-        </p>
-        <WaitlistForm />
-        <div className="mt-12 flex justify-center gap-10 border-t pt-7" style={{ borderColor: "rgba(255,253,231,0.3)" }}>
-          {[
-            { n: "AI", l: "Powered" },
-            { n: "24/7", l: "Monitoring" },
-            { n: "0", l: "Apps to Download" },
-          ].map((s) => (
-            <div key={s.l}>
-              <span className="block text-[26px] font-extrabold" style={{ color: "#FFC04D" }}>{s.n}</span>
-              <span className="block text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: "#FFFDE7" }}>{s.l}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* PROBLEM */}
-      <div className="px-10 py-14">
-        <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>The Problem</div>
-        <h2 className="mb-3 text-[26px] font-extrabold leading-[1.25]" style={{ color: C.greenDark }}>
-          Your farm is losing money<br />while you're away
-        </h2>
-        <p className="mb-8 max-w-[520px] text-[16px] leading-[1.7]" style={{ color: C.bodySoft }}>
-          Thousands of Ugandans own farms they rarely visit. The result? Workers who don't show up, harvests stolen, and crops destroyed by disease — all while you have no idea.
-        </p>
-        <div className="grid grid-cols-2 gap-4">
-          {[
-            { t: "Worker absenteeism", d: "No way to verify if workers arrive, leave early, or don't come at all." },
-            { t: "Crop theft", d: "Coffee, matooke and maize stolen before harvest with no evidence or alerts." },
-            { t: "Zero visibility", d: "You rely entirely on caretaker phone calls you can't verify." },
-            { t: "Crop disease", d: "Disease spreads undetected across fields, wiping out entire harvests." },
-          ].map((p) => (
-            <div key={p.t} className="rounded-[10px] bg-white px-5 py-5" style={{ border: `2px solid ${C.greenBorder}` }}>
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg text-lg font-bold" style={{ background: C.orangeTint, color: C.orangeText }}>!</div>
-              <div className="mb-1 text-[16px] font-bold" style={{ color: C.greenDark }}>{p.t}</div>
-              <div className="text-[15px] leading-[1.6]" style={{ color: C.bodySoft }}>{p.d}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mx-10 h-px" style={{ background: C.greenBorder }} />
-
-      {/* HOW IT WORKS */}
-      <div className="px-10 py-14">
-        <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>How It Works</div>
-        <h2 className="mb-3 text-[26px] font-extrabold leading-[1.25]" style={{ color: C.greenDark }}>
-          Simple. WhatsApp.<br />No tech skills needed.
-        </h2>
-        <div className="mt-7 flex flex-col">
-          {[
-            { t: "Subscribe via MTN MoMo", d: "Pay monthly using your MTN or Airtel Mobile Money. No bank card, no app download required." },
-            { t: "We install solar cameras on your farm", d: "Our team visits within 3 days. Solar-powered cameras work through power cuts. Works on MTN 3G coverage." },
-            { t: "AI monitors your farm 24/7", d: "Motion detection, crop disease scanning, worker arrival tracking, weather monitoring — all automatic." },
-            { t: "Get your FarmBrain report every morning", d: "At 7am, your farm's full status arrives on WhatsApp. Alerts, photos, and AI advice — in plain English." },
-          ].map((s, i) => (
-            <div key={s.t} className="flex items-start gap-4 py-5 last:border-b-0" style={{ borderBottom: `2px dashed ${C.greenBorder}` }}>
-              <div className="mt-[2px] flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-[16px] font-extrabold" style={{ background: C.green, color: C.cream }}>
-                {i + 1}
-              </div>
-              <div>
-                <div className="mb-1 text-[17px] font-bold" style={{ color: C.greenDark }}>{s.t}</div>
-                <div className="text-[15px] leading-[1.6]" style={{ color: C.bodySoft }}>{s.d}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* FARMBRAIN DEMO */}
-      <div className="px-10 pb-14">
-        <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>FarmBrain · Live Example</div>
-        <h2 className="mb-3 text-[26px] font-extrabold leading-[1.25]" style={{ color: C.greenDark }}>
-          What you receive<br />every morning
-        </h2>
-        <div className="mb-4 mt-7 rounded-[14px] p-6" style={{ background: C.greenDark }}>
-          <div className="mb-4 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full text-base font-bold text-white" style={{ background: C.orange }}>F</div>
-            <div>
-              <div className="text-[15px] font-bold" style={{ color: C.cream }}>FarmBrain · Shamba Vue AI</div>
-              <div className="text-[13px]" style={{ color: "rgba(255,253,231,0.75)" }}>Today at 7:02am</div>
-            </div>
+        <div className="mx-auto max-w-[900px] text-center">
+          <div
+            className="mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] backdrop-blur"
+            style={{ background: "rgba(255,192,77,0.15)", color: "#FFC04D", border: "1px solid rgba(255,192,77,0.35)" }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#FFC04D" }} />
+            Beta · Uganda
           </div>
-          <div className="text-[15px] leading-[1.75]" style={{ color: C.cream }}>
-            <div className="font-bold" style={{ color: C.cream }}>Good morning! Here is your Masaka farm update for Wednesday:</div>
-            <br />
+          <h1
+            className="mx-auto mb-6 text-[52px] md:text-[76px] font-black leading-[1.02] tracking-[-0.03em]"
+            style={{ color: C.cream }}
+          >
+            Your farm.<br />
+            <span style={{ color: "#FFC04D" }}>Always in sight.</span>
+          </h1>
+          <p
+            className="mx-auto mb-10 max-w-[560px] text-[19px] leading-[1.55]"
+            style={{ color: "rgba(255,253,231,0.85)" }}
+          >
+            <b style={{ color: C.cream }}>AI monitoring on WhatsApp.</b> One daily report. No app. No login.
+          </p>
+          <WaitlistForm />
+          <div className="mt-16 flex justify-center gap-12 md:gap-16">
             {[
-              // Each row carries an explicit symbol + label so meaning isn't conveyed by color alone (colorblind-safe).
-              { c: "#9CE89C", icon: "✓", label: "OK", t: "Workers: All 3 arrived at 6:51am — on time" },
-              { c: "#9CD7F5", icon: "☂", label: "Info", t: "Weather: Rain expected at 2pm — skip irrigation today" },
-              { c: "#FF9E9E", icon: "▲", label: "Alert", t: "Movement near east boundary at 2:18am — photo attached" },
-              { c: "#FFC04D", icon: "!",  label: "Action", t: "Crop: Coffee in Field B shows early leaf rust — apply fungicide by Thursday" },
-              { c: "#9CE89C", icon: "✓", label: "OK", t: "Harvest forecast: Estimated 3rd week of June based on current growth" },
-            ].map((r) => (
-              <div key={r.t} className="mb-2 flex items-start gap-3">
-                <span
-                  className="mt-[2px] flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-[12px] font-extrabold"
-                  style={{ background: r.c, color: "#0E3A12" }}
-                  aria-label={r.label}
-                >
-                  {r.icon}
-                </span>
-                <span>
-                  <strong style={{ color: r.c }}>{r.label}:</strong> {r.t}
-                </span>
+              { n: "24/7", l: "AI watch" },
+              { n: "0", l: "Apps" },
+              { n: "7am", l: "Daily report" },
+            ].map((s) => (
+              <div key={s.l} className="text-center">
+                <div className="text-[28px] md:text-[32px] font-black" style={{ color: "#FFC04D" }}>{s.n}</div>
+                <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: "rgba(255,253,231,0.7)" }}>{s.l}</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="flex flex-wrap gap-3">
-          {["WhatsApp delivery", "English", "No app needed", "Works on 2G/3G"].map((t) => (
-            <div key={t} className="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[14px] font-semibold" style={{ border: `2px solid ${C.greenBorder}`, color: C.greenDark }}>
-              <div className="flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold" style={{ background: C.green, color: C.cream }}>✓</div>
-              {t}
-            </div>
-          ))}
-        </div>
-      </div>
+      </section>
 
-      <div className="mx-10 h-px" style={{ background: C.greenBorder }} />
-
-      {/* FEATURES */}
-      <div className="px-10 py-14">
-        <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>AI Features</div>
-        <h2 className="mb-3 text-[26px] font-extrabold leading-[1.25]" style={{ color: C.greenDark }}>
-          Everything your farm<br />needs. Built in.
-        </h2>
-        <div className="mt-7 grid grid-cols-2 gap-4">
-          {[
-            { p: "AI", t: "FarmBrain daily report", d: "Full farm status every morning at 7am — workers, weather, crop health, and alerts in one WhatsApp message." },
-            { p: "Security", t: "Motion alerts", d: "AI detects people and animals at night. Instant photo alert on WhatsApp — know within seconds." },
-            { p: "Crop AI", t: "Disease detection", d: "Photo a leaf, send to Shamba Vue AI on WhatsApp. AI identifies the disease and recommends treatment instantly." },
-            { p: "Weather", t: "Farm-specific forecast", d: "Hyper-local weather for your exact GPS location. Irrigation advice, planting windows, harvest timing." },
-            { p: "Workers", t: "Arrival tracking", d: "Know the exact time workers arrive and leave every day. AI alerts you when they're late or absent." },
-            { p: "Solar", t: "Offline-first hardware", d: "Solar-powered cameras with SD backup. No footage lost during power cuts or network outages." },
-          ].map((f) => (
-            <div key={f.t} className="rounded-[10px] bg-white px-5 py-5" style={{ border: `2px solid ${C.greenBorder}` }}>
-              <span className="mb-3 inline-block rounded-full px-3 py-1 text-[12px] font-bold uppercase tracking-[0.08em]" style={{ background: C.green, color: C.cream }}>{f.p}</span>
-              <div className="mb-1 text-[16px] font-bold" style={{ color: C.greenDark }}>{f.t}</div>
-              <div className="text-[15px] leading-[1.6]" style={{ color: C.bodySoft }}>{f.d}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mx-10 h-px" style={{ background: C.greenBorder }} />
-
-      {/* PRICING */}
-      <div className="px-10 py-14">
-        <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>Pricing</div>
-        <h2 className="mb-3 text-[26px] font-extrabold leading-[1.25]" style={{ color: C.greenDark }}>
-          Simple, transparent<br />pricing.
-        </h2>
-        <p className="mb-7 max-w-[520px] text-[16px] leading-[1.7]" style={{ color: C.bodySoft }}>
-          One-time installation. Monthly AI intelligence. Cancel anytime — no hidden fees, ever.
-        </p>
-
-        {/* Founder offer banner */}
-        <div className="mb-7 flex flex-wrap items-center gap-4 rounded-[12px] px-5 py-4" style={{ background: C.orange, color: "#1B1300", border: "2px solid #FFD89A" }}>
-          <span className="rounded-full px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.12em]" style={{ background: "#1B1300", color: C.orange }}>⚡ Limited</span>
-          <div className="flex-1 min-w-[180px]">
-            <div className="text-[16px] font-extrabold">Founding Member Offer</div>
-            <div className="text-[14px]" style={{ color: "#3A2400" }}>First 10 customers — reduced installation fee + permanent founding badge.</div>
-          </div>
-          <div className="text-[22px] font-extrabold">7 <span className="text-[12px] font-semibold uppercase tracking-[0.08em]">spots left</span></div>
-        </div>
-
-        {/* UGANDA TIERS */}
-        <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>Uganda · MTN MoMo</div>
-        <h3 className="mb-5 text-[20px] font-extrabold" style={{ color: C.greenDark }}>Built for Kampala & upcountry farms</h3>
-        <div className="grid gap-4">
-          <PriceCard
-            tier="FarmBrain Basic"
-            badge="Founder Special"
-            badgeTone="founder"
-            install="UGX 250,000"
-            installNote="One-time installation (founding price)"
-            monthly="UGX 50,000"
-            features={["1 solar 4G camera installed", "Daily FarmBrain report at 7am", "Motion alerts with photo on WhatsApp", "Weather advisory for your GPS", "WhatsApp chatbot — STATUS / ALERTS", "Solar-powered — works through outages", "Founding member badge + priority support"]}
-          />
-          <PriceCard
-            tier="FarmBrain Basic"
-            badge="Standard"
-            install="UGX 450,000"
-            installNote="One-time installation"
-            monthly="UGX 50,000"
-            features={["1 solar 4G camera installed", "Daily FarmBrain report at 7am", "Motion alerts with photo", "Weather advisory", "WhatsApp chatbot", "Solar-powered hardware", "Local SD card recording"]}
-          />
-          <PriceCard
-            tier="FarmBrain Standard"
-            badge="Most Popular"
-            badgeTone="popular"
-            featured
-            install="UGX 900,000"
-            installNote="One-time installation"
-            monthly="UGX 120,000"
-            features={["3 solar 4G cameras — full coverage", "Daily FarmBrain AI report", "Motion alerts with photo", "Worker arrival & departure tracking", "Crop disease detection from leaf photo", "Weekly worker productivity score", "Weather + planting advisory", "Full WhatsApp chatbot commands"]}
-          />
-          <PriceCard
-            tier="FarmBrain Premium"
-            badge="Premium"
-            install="UGX 1,500,000"
-            installNote="One-time installation"
-            monthly="UGX 250,000"
-            features={["Unlimited cameras — full perimeter", "Everything in Standard, plus:", "Livestock behaviour AI", "Harvest forecast 4–6 weeks out", "Satellite NDVI crop health (Sentinel-2)", "Monthly 1-on-1 farm review call", "Priority alert response < 5 minutes", "Luganda-language reports on request"]}
-          />
-        </div>
-
-        {/* DIASPORA TIERS */}
-        <div className="mt-12 mb-3 text-[13px] font-bold uppercase tracking-[0.12em]" style={{ color: C.orangeText }}>Diaspora · USD / EUR</div>
-        <h3 className="mb-5 text-[20px] font-extrabold" style={{ color: C.greenDark }}>For Ugandans abroad</h3>
-        <div className="grid gap-4">
-          <PriceCard
-            tier="Diaspora Starter"
-            badge="Starter"
-            install="$120 USD"
-            installNote="One-time installation · also €110"
-            monthly="$30 USD"
-            monthlyNote="/ month · also €28"
-            features={["1 solar 4G camera, installed by our team", "Daily FarmBrain report on WhatsApp", "Motion alerts to your international number", "Weather advisory for your farm location", "Setup video call — we walk you through", "Pay by Wise, PayPal, bank transfer or card"]}
-          />
-          <PriceCard
-            tier="Diaspora Standard"
-            badge="Most Popular Diaspora"
-            badgeTone="popular"
-            featured
-            install="$180 USD"
-            installNote="One-time installation · also €165"
-            monthly="$50 USD"
-            monthlyNote="/ month · also €46"
-            features={["2 solar 4G cameras — entrance + main area", "Daily FarmBrain AI report", "Instant motion alerts to your WhatsApp", "Worker arrival & departure log", "Crop disease detection from leaf photo", "Harvest window forecast", "Monthly WhatsApp check-in call", "Pay in USD or EUR — Wise / PayPal / card"]}
-          />
-          <PriceCard
-            tier="Diaspora Elite"
-            badge="Elite"
-            install="$300 USD"
-            installNote="One-time installation · also €275"
-            monthly="$80 USD"
-            monthlyNote="/ month · also €74"
-            features={["3+ cameras — full perimeter", "Everything in Diaspora Standard, plus:", "Livestock behaviour AI", "Satellite crop health (Sentinel-2)", "Monthly PDF farm performance report", "Bi-weekly video call with our team", "Caretaker accountability scoring", "Emergency on-ground response protocol"]}
-          />
-        </div>
-
-        {/* Payment note */}
-        <div className="mt-7 rounded-[12px] bg-white px-5 py-5" style={{ border: `2px solid ${C.greenBorder}` }}>
-          <div className="mb-1 text-[15px] font-extrabold" style={{ color: C.greenDark }}>💳 Diaspora payment methods</div>
-          <div className="text-[15px] leading-[1.65]" style={{ color: C.bodySoft }}>
-            International bank transfer (SWIFT/IBAN), Wise, PayPal, or major debit/credit cards in USD or EUR. Subscriptions billed monthly — cancel anytime with 7 days notice. Hardware installed in Uganda within 3–5 working days of payment.
+      {/* PROBLEM — light, tight */}
+      <section className="px-6 md:px-10 py-24">
+        <div className="mx-auto max-w-[900px]">
+          <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: C.orangeText }}>The problem</div>
+          <h2 className="mb-4 text-[38px] md:text-[48px] font-black leading-[1.05] tracking-[-0.02em]" style={{ color: C.greenDark }}>
+            Your farm loses money<br />
+            <span style={{ color: C.orangeText }}>while you're away.</span>
+          </h2>
+          <p className="mb-12 max-w-[520px] text-[18px]" style={{ color: C.bodySoft }}>
+            Workers skip. Harvests vanish. Disease spreads. You <b style={{ color: C.greenDark }}>never know</b>.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {[
+              { t: "Worker no-shows", d: "No way to verify hours." },
+              { t: "Theft", d: "Coffee & maize disappear before harvest." },
+              { t: "Zero visibility", d: "Only caretaker calls you can't verify." },
+              { t: "Disease", d: "Spreads undetected across fields." },
+            ].map((p) => (
+              <div key={p.t} className="rounded-2xl bg-white px-6 py-5 transition hover:-translate-y-0.5" style={{ border: `1px solid ${C.greenBorder}` }}>
+                <div className="mb-1 text-[17px] font-extrabold" style={{ color: C.greenDark }}>{p.t}</div>
+                <div className="text-[15px]" style={{ color: C.bodySoft }}>{p.d}</div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* DIASPORA BAND */}
-      <div className="px-10 py-10 text-center" style={{ background: C.greenDark }}>
-        <h3 className="mb-2 text-[22px] font-extrabold" style={{ color: C.cream }}>
-          Own a farm in Uganda<br />from anywhere in the world?
-        </h3>
-        <p className="mb-5 text-[15px]" style={{ color: "rgba(255,253,231,0.95)" }}>
-          Join hundreds of diaspora Ugandans in the UK, USA, and UAE<br />monitoring their farms from their phones — in real time.
-        </p>
-        <WaitlistForm variant="diaspora" />
+      {/* HOW IT WORKS — light */}
+      <section className="px-6 md:px-10 pb-24">
+        <div className="mx-auto max-w-[900px]">
+          <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: C.orangeText }}>How it works</div>
+          <h2 className="mb-14 text-[38px] md:text-[48px] font-black leading-[1.05] tracking-[-0.02em]" style={{ color: C.greenDark }}>
+            Simple. WhatsApp.<br />
+            <span style={{ color: C.orangeText }}>Nothing to learn.</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { t: "Subscribe via MoMo", d: "MTN or Airtel. No card." },
+              { t: "We install", d: "Solar cameras in 3 days." },
+              { t: "AI watches 24/7", d: "Motion, disease, workers, weather." },
+              { t: "Report at 7am", d: "One WhatsApp. Plain English." },
+            ].map((s, i) => (
+              <div key={s.t} className="rounded-2xl bg-white p-6" style={{ border: `1px solid ${C.greenBorder}` }}>
+                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full text-[14px] font-black" style={{ background: C.greenDark, color: C.cream }}>
+                  {i + 1}
+                </div>
+                <div className="mb-1 text-[18px] font-extrabold" style={{ color: C.greenDark }}>{s.t}</div>
+                <div className="text-[15px]" style={{ color: C.bodySoft }}>{s.d}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== DARK BAND START ==================== */}
+      <div style={{ background: D.bg, color: D.text }}>
+        {/* FARMBRAIN DEMO — dark */}
+        <section className="px-6 md:px-10 pt-24 pb-16">
+          <div className="mx-auto max-w-[900px]">
+            <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: D.amber }}>FarmBrain · Live example</div>
+            <h2 className="mb-12 text-[38px] md:text-[48px] font-black leading-[1.05] tracking-[-0.02em]" style={{ color: D.text }}>
+              What you get<br />
+              <span style={{ color: D.amber }}>every morning.</span>
+            </h2>
+            <div className="rounded-3xl p-6 md:p-8 backdrop-blur" style={{ background: D.surface, border: `1px solid ${D.border}` }}>
+              <div className="mb-5 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full text-base font-black text-white" style={{ background: C.orange }}>F</div>
+                <div>
+                  <div className="text-[15px] font-extrabold" style={{ color: D.text }}>FarmBrain · Shamba Vue AI</div>
+                  <div className="text-[12px]" style={{ color: D.textMute }}>Today · 7:02am</div>
+                </div>
+              </div>
+              <div className="text-[15px] leading-[1.75]" style={{ color: D.textSoft }}>
+                <div className="mb-3 font-extrabold" style={{ color: D.text }}>Masaka farm · Wednesday update</div>
+                {[
+                  { c: "#9CE89C", icon: "✓", label: "OK", t: "Workers: all 3 arrived 6:51am" },
+                  { c: "#9CD7F5", icon: "☂", label: "Info", t: "Rain 2pm — skip irrigation" },
+                  { c: "#FF9E9E", icon: "▲", label: "Alert", t: "Movement east boundary 2:18am — photo attached" },
+                  { c: "#FFC04D", icon: "!", label: "Action", t: "Coffee Field B: leaf rust — fungicide by Thursday" },
+                  { c: "#9CE89C", icon: "✓", label: "OK", t: "Harvest forecast: 3rd week of June" },
+                ].map((r) => (
+                  <div key={r.t} className="mb-2 flex items-start gap-3">
+                    <span
+                      className="mt-[3px] flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-[12px] font-black"
+                      style={{ background: r.c, color: "#0E3A12" }}
+                      aria-label={r.label}
+                    >
+                      {r.icon}
+                    </span>
+                    <span>
+                      <b style={{ color: r.c }}>{r.label}:</b>{" "}
+                      <span style={{ color: D.text }}>{r.t}</span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {["WhatsApp", "English", "No app", "Works on 2G/3G"].map((t) => (
+                <div key={t} className="rounded-full px-3.5 py-1.5 text-[13px] font-semibold" style={{ background: D.surface, border: `1px solid ${D.border}`, color: D.textSoft }}>
+                  {t}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FEATURES — dark */}
+        <section className="px-6 md:px-10 py-16">
+          <div className="mx-auto max-w-[900px]">
+            <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: D.amber }}>AI features</div>
+            <h2 className="mb-12 text-[38px] md:text-[48px] font-black leading-[1.05] tracking-[-0.02em]" style={{ color: D.text }}>
+              Everything your farm<br />
+              <span style={{ color: D.amber }}>needs. Built in.</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {[
+                { p: "AI", t: "Daily FarmBrain report", d: "Workers, weather, crops, alerts — one message at 7am." },
+                { p: "Security", t: "Motion alerts", d: "AI spots people & animals. Instant photo on WhatsApp." },
+                { p: "Crop AI", t: "Disease detection", d: "Photo a leaf. Get diagnosis & treatment in seconds." },
+                { p: "Weather", t: "Hyper-local forecast", d: "GPS-precise irrigation & harvest windows." },
+                { p: "Workers", t: "Arrival tracking", d: "Know exactly when they clock in and out." },
+                { p: "Solar", t: "Offline-first", d: "Solar cameras. SD backup. Survives outages." },
+              ].map((f) => (
+                <div key={f.t} className="rounded-2xl p-6 backdrop-blur transition hover:-translate-y-0.5" style={{ background: D.surface, border: `1px solid ${D.border}` }}>
+                  <span className="mb-3 inline-block rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em]" style={{ background: D.surfaceHi, color: D.amber, border: `1px solid ${D.border}` }}>{f.p}</span>
+                  <div className="mb-1 text-[17px] font-extrabold" style={{ color: D.text }}>{f.t}</div>
+                  <div className="text-[15px]" style={{ color: D.textSoft }}>{f.d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PRICING — dark */}
+        <section id="pricing" className="px-6 md:px-10 py-16 pb-28">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: D.amber }}>Pricing</div>
+            <h2 className="mb-4 text-[38px] md:text-[48px] font-black leading-[1.05] tracking-[-0.02em]" style={{ color: D.text }}>
+              Simple.<br />
+              <span style={{ color: D.amber }}>Transparent.</span>
+            </h2>
+            <p className="mb-8 max-w-[520px] text-[17px]" style={{ color: D.textSoft }}>
+              One-time install. Monthly AI. <b style={{ color: D.text }}>Cancel anytime.</b>
+            </p>
+
+            {/* Founder banner */}
+            <div className="mb-10 flex flex-wrap items-center gap-4 rounded-2xl px-5 py-4" style={{ background: "linear-gradient(90deg, rgba(245,127,23,0.18), rgba(245,127,23,0.06))", border: `1px solid rgba(245,127,23,0.45)` }}>
+              <span className="rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em]" style={{ background: C.orange, color: "#1B1300" }}>⚡ Limited</span>
+              <div className="flex-1 min-w-[180px]">
+                <div className="text-[16px] font-extrabold" style={{ color: D.text }}>Founding member offer</div>
+                <div className="text-[14px]" style={{ color: D.textSoft }}>First 10 customers — reduced install + founding badge.</div>
+              </div>
+              <div className="text-[22px] font-black" style={{ color: D.amber }}>7 <span className="text-[11px] font-semibold uppercase tracking-[0.08em]" style={{ color: D.textSoft }}>spots left</span></div>
+            </div>
+
+            {/* UGANDA TIERS */}
+            <div className="mb-3 text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: D.amber }}>Uganda · MTN MoMo</div>
+            <h3 className="mb-6 text-[22px] font-extrabold" style={{ color: D.text }}>Kampala & upcountry</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <PriceCardDark
+                tier="FarmBrain Basic"
+                badge="Founder Special"
+                badgeTone="founder"
+                install="UGX 250,000"
+                installNote="One-time install (founder price)"
+                monthly="UGX 50,000"
+                features={["1 solar 4G camera", "Daily FarmBrain report", "Motion alerts + photos", "Weather advisory", "WhatsApp chatbot", "Founding badge + priority support"]}
+              />
+              <PriceCardDark
+                tier="FarmBrain Basic"
+                badge="Standard"
+                install="UGX 450,000"
+                installNote="One-time install"
+                monthly="UGX 50,000"
+                features={["1 solar 4G camera", "Daily FarmBrain report", "Motion alerts + photos", "Weather advisory", "WhatsApp chatbot", "SD card recording"]}
+              />
+              <PriceCardDark
+                tier="FarmBrain Standard"
+                badge="Most Popular"
+                badgeTone="popular"
+                featured
+                install="UGX 900,000"
+                installNote="One-time install"
+                monthly="UGX 120,000"
+                features={["3 solar 4G cameras", "Daily FarmBrain AI report", "Worker arrival tracking", "Crop disease detection", "Productivity score", "Weather + planting advisory"]}
+              />
+              <PriceCardDark
+                tier="FarmBrain Premium"
+                badge="Premium"
+                install="UGX 1,500,000"
+                installNote="One-time install"
+                monthly="UGX 250,000"
+                features={["Unlimited cameras", "Everything in Standard", "Livestock behaviour AI", "Harvest forecast", "Satellite NDVI (Sentinel-2)", "Priority < 5min response"]}
+              />
+            </div>
+
+            {/* DIASPORA */}
+            <div className="mt-14 mb-3 text-[12px] font-bold uppercase tracking-[0.14em]" style={{ color: D.amber }}>Diaspora · USD / EUR</div>
+            <h3 className="mb-6 text-[22px] font-extrabold" style={{ color: D.text }}>For Ugandans abroad</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <PriceCardDark
+                tier="Diaspora Starter"
+                badge="Starter"
+                install="$120 USD"
+                installNote="One-time · also €110"
+                monthly="$30 USD"
+                monthlyNote="/ mo · also €28"
+                features={["1 solar 4G camera", "Daily report on WhatsApp", "Motion alerts", "Weather advisory", "Setup video call", "Wise / PayPal / card"]}
+              />
+              <PriceCardDark
+                tier="Diaspora Standard"
+                badge="Most Popular"
+                badgeTone="popular"
+                featured
+                install="$180 USD"
+                installNote="One-time · also €165"
+                monthly="$50 USD"
+                monthlyNote="/ mo · also €46"
+                features={["2 solar 4G cameras", "Daily FarmBrain AI report", "Worker arrival log", "Crop disease detection", "Harvest forecast", "Monthly check-in call"]}
+              />
+              <PriceCardDark
+                tier="Diaspora Elite"
+                badge="Elite"
+                install="$300 USD"
+                installNote="One-time · also €275"
+                monthly="$80 USD"
+                monthlyNote="/ mo · also €74"
+                features={["3+ cameras · full perimeter", "Everything in Standard", "Livestock behaviour AI", "Satellite crop health", "Monthly PDF report", "Bi-weekly video call"]}
+              />
+            </div>
+
+            <div className="mt-8 rounded-2xl px-5 py-5" style={{ background: D.surface, border: `1px solid ${D.border}` }}>
+              <div className="mb-1 text-[15px] font-extrabold" style={{ color: D.text }}>💳 Diaspora payment methods</div>
+              <div className="text-[14px] leading-[1.6]" style={{ color: D.textSoft }}>
+                SWIFT/IBAN, Wise, PayPal, or debit/credit card in USD or EUR. Billed monthly. Hardware installed in Uganda within 3–5 working days.
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
+      {/* ==================== DARK BAND END ==================== */}
+
+      {/* DIASPORA CTA */}
+      <section className="px-6 md:px-10 py-20 text-center" style={{ background: C.greenDark }}>
+        <div className="mx-auto max-w-[720px]">
+          <h3 className="mb-4 text-[32px] md:text-[42px] font-black leading-[1.05] tracking-[-0.02em]" style={{ color: C.cream }}>
+            Own a farm in Uganda<br />
+            <span style={{ color: "#FFC04D" }}>from anywhere?</span>
+          </h3>
+          <p className="mb-8 text-[17px]" style={{ color: "rgba(255,253,231,0.85)" }}>
+            Join diaspora Ugandans in the <b style={{ color: C.cream }}>UK, USA & UAE</b> watching their farms in real time.
+          </p>
+          <WaitlistForm variant="diaspora" />
+        </div>
+      </section>
 
       {/* FOOTER */}
-      <div className="px-10 py-9" style={{ background: C.greenDark }}>
-        <div className="mb-2 text-[18px] font-extrabold" style={{ color: C.cream }}>🌿 Shamba Vue AI</div>
-        <div className="mb-5 text-[14px]" style={{ color: "rgba(255,253,231,0.85)" }}>Your farm. Always in sight. · Uganda, East Africa</div>
-        <h3 className="mb-3 text-[18px] font-extrabold" style={{ color: C.cream }}>Contact Us</h3>
-        <div className="mb-5 grid gap-3 text-[14px] font-semibold" style={{ color: C.cream }}>
-          <a href="mailto:shambavueai@gmail.com" className="underline">Email us: shambavueai@gmail.com</a>
-          <a href="https://wa.me/256764028496" target="_blank" rel="noopener noreferrer" className="underline">WhatsApp us: +256 764 028 496</a>
+      <footer className="px-6 md:px-10 py-12" style={{ background: "#081208", color: C.cream }}>
+        <div className="mx-auto max-w-[900px]">
+          <div className="mb-1 flex items-center gap-2 text-[18px] font-extrabold">
+            <img src={shambaLogo.url} alt="" className="h-7 w-7 object-contain" />
+            Shamba Vue AI
+          </div>
+          <div className="mb-8 text-[14px]" style={{ color: "rgba(255,253,231,0.7)" }}>Your farm. Always in sight. · Uganda</div>
+          <h3 className="mb-3 text-[16px] font-extrabold">Contact us</h3>
+          <div className="grid gap-2 text-[14px] font-semibold">
+            <a href="mailto:shambavueai@gmail.com" className="underline underline-offset-4">shambavueai@gmail.com</a>
+            <a href="https://wa.me/256764028496" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">WhatsApp · +256 764 028 496</a>
+          </div>
+          <div className="mt-8 border-t pt-4 text-[13px]" style={{ borderColor: "rgba(255,253,231,0.15)", color: "rgba(255,253,231,0.6)" }}>
+            © 2026 Shamba Vue AI · Founded in Uganda
+          </div>
         </div>
-        <div className="mt-5 border-t pt-4 text-[13px]" style={{ borderColor: "rgba(255,253,231,0.25)", color: "rgba(255,253,231,0.8)" }}>
-          © 2026 Shamba Vue AI · Founded in Uganda
-        </div>
-      </div>
+      </footer>
     </div>
   );
 }
 
-function PriceCard({
+function PriceCardDark({
   tier,
   badge,
   badgeTone = "standard",
   install,
-  installNote = "One-time installation",
+  installNote = "One-time install",
   monthly,
   monthlyNote = "/ month",
   features,
@@ -400,27 +446,33 @@ function PriceCard({
     badgeTone === "founder"
       ? { background: C.orange, color: "#1B1300" }
       : badgeTone === "popular"
-      ? { background: C.green, color: C.cream }
-      : { background: C.greenTint, color: C.greenDark };
+      ? { background: D.amber, color: "#1B1300" }
+      : { background: D.surfaceHi, color: D.text, border: `1px solid ${D.border}` };
 
   return (
-    <div className="rounded-[12px] bg-white p-5" style={{ border: featured ? `3px solid ${C.green}` : `2px solid ${C.greenBorder}` }}>
+    <div
+      className="rounded-2xl p-6 backdrop-blur transition hover:-translate-y-0.5"
+      style={{
+        background: featured ? "rgba(255,192,77,0.06)" : D.surface,
+        border: featured ? `1px solid ${D.amber}` : `1px solid ${D.border}`,
+      }}
+    >
       {badge && (
-        <span className="mb-3 inline-block rounded-full px-3 py-1 text-[12px] font-bold uppercase tracking-[0.08em]" style={badgeStyle}>
+        <span className="mb-3 inline-block rounded-full px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.08em]" style={badgeStyle}>
           {badge}
         </span>
       )}
-      <div className="mb-2 text-[18px] font-extrabold" style={{ color: C.greenDark }}>{tier}</div>
-      <div className="text-[24px] font-extrabold leading-none" style={{ color: C.greenDark }}>{install}</div>
-      <div className="mt-1 text-[12px] font-semibold uppercase tracking-[0.06em]" style={{ color: C.bodySoft }}>{installNote}</div>
-      <div className="mt-2 flex items-baseline gap-2">
-        <span className="text-[20px] font-extrabold" style={{ color: C.orangeText }}>{monthly}</span>
-        <span className="text-[14px] font-semibold" style={{ color: C.bodySoft }}>{monthlyNote}</span>
+      <div className="mb-3 text-[17px] font-extrabold" style={{ color: D.text }}>{tier}</div>
+      <div className="text-[28px] font-black leading-none tracking-[-0.02em]" style={{ color: D.text }}>{install}</div>
+      <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.08em]" style={{ color: D.textMute }}>{installNote}</div>
+      <div className="mt-3 flex items-baseline gap-2">
+        <span className="text-[22px] font-black" style={{ color: D.amber }}>{monthly}</span>
+        <span className="text-[13px] font-semibold" style={{ color: D.textSoft }}>{monthlyNote}</span>
       </div>
-      <div className="mt-4">
+      <div className="mt-5 space-y-2.5">
         {features.map((f) => (
-          <div key={f} className="flex items-start gap-2 py-2 text-[15px] last:border-b-0" style={{ color: C.body, borderBottom: `1px solid ${C.greenBorder}` }}>
-            <div className="mt-[3px] flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold" style={{ background: C.green, color: C.cream }}>✓</div>
+          <div key={f} className="flex items-start gap-2.5 text-[14px]" style={{ color: D.textSoft }}>
+            <div className="mt-[3px] flex h-[16px] w-[16px] flex-shrink-0 items-center justify-center rounded-full text-[10px] font-black" style={{ background: D.amber, color: "#1B1300" }}>✓</div>
             <span>{f}</span>
           </div>
         ))}
