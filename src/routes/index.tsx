@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WaitlistForm } from "@/components/WaitlistForm";
+import { useReveal } from "@/hooks/use-reveal";
 import farmHero from "@/assets/farm-hero.jpg.asset.json";
 import shambaLogo from "@/assets/shamba-logo.png.asset.json";
 
