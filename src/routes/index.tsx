@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WaitlistForm } from "@/components/WaitlistForm";
+import { useReveal } from "@/hooks/use-reveal";
 import farmHero from "@/assets/farm-hero.jpg.asset.json";
 import shambaLogo from "@/assets/shamba-logo.png.asset.json";
 
@@ -64,6 +65,7 @@ const D = {
 };
 
 function Index() {
+  useReveal();
   return (
     <div
       className="w-full"
@@ -107,27 +109,28 @@ function Index() {
       >
         <div className="mx-auto max-w-[900px] text-center">
           <div
-            className="mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] backdrop-blur"
+            className="svai-hero-in mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] backdrop-blur"
             style={{ background: "rgba(255,192,77,0.15)", color: "#FFC04D", border: "1px solid rgba(255,192,77,0.35)" }}
           >
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#FFC04D" }} />
             Beta · Uganda
           </div>
           <h1
-            className="mx-auto mb-6 text-[52px] md:text-[76px] font-black leading-[1.02] tracking-[-0.03em]"
+            className="svai-hero-in-1 mx-auto mb-6 text-[52px] md:text-[76px] font-black leading-[1.02] tracking-[-0.03em]"
             style={{ color: C.cream }}
           >
             Your farm.<br />
             <span style={{ color: "#FFC04D" }}>Always in sight.</span>
           </h1>
           <p
-            className="mx-auto mb-10 max-w-[560px] text-[19px] leading-[1.55]"
+            className="svai-hero-in-2 mx-auto mb-10 max-w-[560px] text-[19px] leading-[1.55]"
             style={{ color: "rgba(255,253,231,0.85)" }}
           >
             <b style={{ color: C.cream }}>AI monitoring on WhatsApp.</b> One daily report. No app. No login.
           </p>
-          <WaitlistForm />
-          <div className="mt-16 flex justify-center gap-12 md:gap-16">
+          <div className="svai-hero-in-3"><WaitlistForm /></div>
+          <div className="svai-hero-in-4 mt-16 flex justify-center gap-12 md:gap-16">
+
             {[
               { n: "24/7", l: "AI watch" },
               { n: "0", l: "Apps" },
@@ -160,7 +163,7 @@ function Index() {
               { t: "Zero visibility", d: "Only caretaker calls you can't verify." },
               { t: "Disease", d: "Spreads undetected across fields." },
             ].map((p) => (
-              <div key={p.t} className="rounded-2xl bg-white px-6 py-5 transition hover:-translate-y-0.5" style={{ border: `1px solid ${C.greenBorder}` }}>
+              <div key={p.t} className="rounded-2xl bg-white px-6 py-5 svai-lift" style={{ border: `1px solid ${C.greenBorder}` }}>
                 <div className="mb-1 text-[17px] font-extrabold" style={{ color: C.greenDark }}>{p.t}</div>
                 <div className="text-[15px]" style={{ color: C.bodySoft }}>{p.d}</div>
               </div>
@@ -266,7 +269,7 @@ function Index() {
                 { p: "Workers", t: "Arrival tracking", d: "Know exactly when they clock in and out." },
                 { p: "Solar", t: "Offline-first", d: "Solar cameras. SD backup. Survives outages." },
               ].map((f) => (
-                <div key={f.t} className="rounded-2xl p-6 backdrop-blur transition hover:-translate-y-0.5" style={{ background: D.surface, border: `1px solid ${D.border}` }}>
+                <div key={f.t} className="rounded-2xl p-6 backdrop-blur svai-lift" style={{ background: D.surface, border: `1px solid ${D.border}` }}>
                   <span className="mb-3 inline-block rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em]" style={{ background: D.surfaceHi, color: D.amber, border: `1px solid ${D.border}` }}>{f.p}</span>
                   <div className="mb-1 text-[17px] font-extrabold" style={{ color: D.text }}>{f.t}</div>
                   <div className="text-[15px]" style={{ color: D.textSoft }}>{f.d}</div>
@@ -451,7 +454,7 @@ function PriceCardDark({
 
   return (
     <div
-      className="rounded-2xl p-6 backdrop-blur transition hover:-translate-y-0.5"
+      className="rounded-2xl p-6 backdrop-blur svai-lift"
       style={{
         background: featured ? "rgba(255,192,77,0.06)" : D.surface,
         border: featured ? `1px solid ${D.amber}` : `1px solid ${D.border}`,
