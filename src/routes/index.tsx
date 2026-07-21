@@ -109,27 +109,28 @@ function Index() {
       >
         <div className="mx-auto max-w-[900px] text-center">
           <div
-            className="mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] backdrop-blur"
+            className="svai-hero-in mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] backdrop-blur"
             style={{ background: "rgba(255,192,77,0.15)", color: "#FFC04D", border: "1px solid rgba(255,192,77,0.35)" }}
           >
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#FFC04D" }} />
             Beta · Uganda
           </div>
           <h1
-            className="mx-auto mb-6 text-[52px] md:text-[76px] font-black leading-[1.02] tracking-[-0.03em]"
+            className="svai-hero-in-1 mx-auto mb-6 text-[52px] md:text-[76px] font-black leading-[1.02] tracking-[-0.03em]"
             style={{ color: C.cream }}
           >
             Your farm.<br />
             <span style={{ color: "#FFC04D" }}>Always in sight.</span>
           </h1>
           <p
-            className="mx-auto mb-10 max-w-[560px] text-[19px] leading-[1.55]"
+            className="svai-hero-in-2 mx-auto mb-10 max-w-[560px] text-[19px] leading-[1.55]"
             style={{ color: "rgba(255,253,231,0.85)" }}
           >
             <b style={{ color: C.cream }}>AI monitoring on WhatsApp.</b> One daily report. No app. No login.
           </p>
-          <WaitlistForm />
-          <div className="mt-16 flex justify-center gap-12 md:gap-16">
+          <div className="svai-hero-in-3"><WaitlistForm /></div>
+          <div className="svai-hero-in-4 mt-16 flex justify-center gap-12 md:gap-16">
+
             {[
               { n: "24/7", l: "AI watch" },
               { n: "0", l: "Apps" },
