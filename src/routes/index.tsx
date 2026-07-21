@@ -65,6 +65,7 @@ const D = {
 };
 
 function Index() {
+  useReveal();
   return (
     <div
       className="w-full"
